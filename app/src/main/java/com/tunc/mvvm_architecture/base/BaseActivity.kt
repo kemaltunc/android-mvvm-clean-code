@@ -11,12 +11,14 @@ import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 
-abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfaces>>(val model: VM) :
+abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfaces>> :
     DaggerAppCompatActivity(),
     BaseInterfaces {
 
     @LayoutRes
     abstract fun layoutRes(): Int
+
+    abstract fun model(): Any
 
     protected lateinit var binding: T
         private set
@@ -35,9 +37,10 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfac
             ViewModelProviders.of(
                 this,
                 viewModelFactory
-            ).get((model).javaClass).also {
+            ).get((model() as Class<VM>)).also {
                 it.onAttach(this)
             }
+
     }
 
     override fun showMessage(message: String) {
