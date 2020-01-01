@@ -5,6 +5,5 @@ import com.tunc.mvvm_architecture.presentation.view_holder.PostViewHolder
 
 data class Post(
     var id: String? = "",
-    var title: String? = "",
-    var body: String? = "bodybodybody"
+    var title: String? = ""
 ) : BaseModel(PostViewHolder.LAYOUT_ID)

@@ -1,13 +1,10 @@
 package com.tunc.mvvm_architecture.domain.datasource
 
-import com.tunc.mvvm_architecture.data.model.response.PostResponse
-import com.tunc.mvvm_architecture.data.repository.PostRepositoryImp
 import com.tunc.mvvm_architecture.domain.repository.PostRepository
-import io.reactivex.Observable
+import javax.inject.Inject
 
-class PostDataSource constructor(private val repository: PostRepositoryImp) : PostRepository {
-    override fun getPost(postId: String): Observable<PostResponse> {
-        return repository.getPost(postId)
-    }
+class PostDataSource @Inject constructor(private val postRepository: PostRepository) {
 
+    fun getData() = postRepository.getPost("1234")
+    fun getTodos() = postRepository.getTodos()
 }

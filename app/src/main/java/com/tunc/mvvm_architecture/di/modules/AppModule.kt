@@ -3,7 +3,7 @@ package com.tunc.mvvm_architecture.di.modules
 import android.app.Application
 import android.content.Context
 import com.tunc.mvvm_architecture.MainApplication
-import com.tunc.mvvm_architecture.domain.usecase.Post.PostUseCase
+import com.tunc.mvvm_architecture.domain.datasource.PostDataSource
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -19,8 +19,4 @@ class AppModule {
     @Singleton
     fun provideApplicationContext(app: MainApplication): Context = app.applicationContext
 
-
-    @Provides
-    @Singleton
-    fun providePostUseCase() = PostUseCase()
 }

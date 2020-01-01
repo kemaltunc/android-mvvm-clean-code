@@ -2,8 +2,8 @@ package com.tunc.mvvm_architecture.di.modules
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.android.artgallery.presentation.ViewModelFactory
 import com.tunc.mvvm_architecture.base.BaseInterfaces
-import com.tunc.mvvm_architecture.di.ViewModelFactory
 import com.tunc.mvvm_architecture.di.ViewModelKey
 import com.tunc.mvvm_architecture.presentation.ui.main.MainScreenActivityViewModel
 import dagger.Binds

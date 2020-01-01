@@ -1,7 +1,9 @@
 package com.tunc.mvvm_architecture.di.modules
 
 import android.content.Context
-import com.tunc.mvvm_architecture.BuildConfig
+import com.tunc.mvvm_architecture.data.remote.repository.PostRepositoryImp
+import com.tunc.mvvm_architecture.data.remote.services.PostServices
+import com.tunc.mvvm_architecture.domain.repository.PostRepository
 import com.tunc.mvvm_architecture.utils.AppConstants
 import com.tunc.mvvm_architecture.utils.CacheInterceptor
 import com.tunc.mvvm_architecture.utils.LoggingIterceptor
@@ -30,8 +32,20 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient) = Retrofit.Builder()
-        .baseUrl("")
+        .baseUrl("https://jsonplaceholder.typicode.com/")
         .client(okHttpClient)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create()).build()
+
+
+    @Provides
+    @Singleton
+    fun providePostServices(retrofit: Retrofit) = retrofit.create(PostServices::class.java)
+
+
+    @Provides
+    @Singleton
+    fun providePostRepository(postServices: PostServices): PostRepository {
+        return PostRepositoryImp(postServices)
+    }
 }

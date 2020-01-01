@@ -19,20 +19,3 @@ class PostAdapter : BaseAdapter<BaseModel, BaseViewHolder<BaseModel, Any>>() {
         } as BaseViewHolder<BaseModel, Any>
 
 }
-
-/*
-@BindingAdapter(value = ["users", "viewmodel"])
-fun setPost(
-    view: RecyclerView,
-    items: List<BaseModel>,
-    vm: MainScreenActivityViewModel<BaseInterfaces>
-) {
-    view.adapter?.vertical(
-        recyclerView = view
-    )?.run {
-        if (this is PostAdapter) this.items = items
-    } ?: run {
-        PostAdapter().apply { view.adapter = this }.items
-    }
-}
-*/
