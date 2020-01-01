@@ -1,10 +1,10 @@
 package com.tunc.mvvm_architecture.di.components
 
 import com.tunc.mvvm_architecture.MainApplication
-import com.tunc.mvvm_architecture.di.ViewModelFactory
 import com.tunc.mvvm_architecture.di.modules.ActivityInjectorModules
 import com.tunc.mvvm_architecture.di.modules.AppModule
 import com.tunc.mvvm_architecture.di.modules.NetworkModule
+import com.tunc.mvvm_architecture.di.modules.ViewModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -17,7 +17,7 @@ import javax.inject.Singleton
         AppModule::class,
         ActivityInjectorModules::class,
         NetworkModule::class,
-        ViewModelFactory::class
+        ViewModule::class
     ]
 )
 interface AppComponent {

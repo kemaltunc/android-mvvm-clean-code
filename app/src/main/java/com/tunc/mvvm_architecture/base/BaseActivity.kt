@@ -6,30 +6,23 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
-import com.tunc.mvvm_architecture.di.ViewModelInjectionField
-import com.tunc.mvvm_architecture.di.qualifers.ViewModelInjection
+import androidx.lifecycle.ViewModelProviders
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
 
-abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfaces>> :
+abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfaces>>(val model: VM) :
     DaggerAppCompatActivity(),
     BaseInterfaces {
 
     @LayoutRes
     abstract fun layoutRes(): Int
 
-    @Inject
-    @ViewModelInjection
-    lateinit var injectModel: ViewModelInjectionField<VM>
-
-    protected lateinit
-    var binding: T
+    protected lateinit var binding: T
         private set
 
     protected lateinit var viewModel: VM
         private set
-
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -37,13 +30,14 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfac
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, layoutRes())
-        injectModel.get().onAttach(this)
-
-        viewModel = injectModel.get()
-
-
+        viewModel =
+            ViewModelProviders.of(
+                this,
+                viewModelFactory
+            ).get((model).javaClass).also {
+                it.onAttach(this)
+            }
     }
 
     override fun showMessage(message: String) {
@@ -51,12 +45,3 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfac
     }
 
 }
-
-/*protected lateinit var viewModel: MainScreenActivityViewModel<*>
-    private set
-
-viewModel =
-ViewModelProviders.of(
-this,
-viewModelFactory
-)[MainScreenActivityViewModel::class.java]*/

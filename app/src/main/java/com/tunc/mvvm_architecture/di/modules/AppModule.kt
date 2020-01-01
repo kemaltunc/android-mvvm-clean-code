@@ -2,8 +2,8 @@ package com.tunc.mvvm_architecture.di.modules
 
 import android.app.Application
 import android.content.Context
+import androidx.lifecycle.ViewModelProvider
 import com.tunc.mvvm_architecture.MainApplication
-import com.tunc.mvvm_architecture.base.BaseInterfaces
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,5 +18,6 @@ class AppModule {
     @Provides
     @Singleton
     fun provideApplicationContext(app: MainApplication): Context = app.applicationContext
+
 
 }

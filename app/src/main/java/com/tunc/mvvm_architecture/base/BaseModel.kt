@@ -1,3 +1,5 @@
 package com.tunc.mvvm_architecture.base
 
-abstract class BaseModel constructor(override var layoutId: Int) : RecyclerItem
+import java.io.Serializable
+
+abstract class BaseModel constructor(var layoutId: Int) : Serializable

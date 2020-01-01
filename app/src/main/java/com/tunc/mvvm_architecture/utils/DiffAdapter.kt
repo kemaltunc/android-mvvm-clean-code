@@ -2,11 +2,11 @@ package com.tunc.mvvm_architecture.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.tunc.mvvm_architecture.base.RecyclerItem
+import com.tunc.mvvm_architecture.base.BaseModel
 
 interface DiffAdapter {
 
-    fun <A : RecyclerView.Adapter<*>, M : RecyclerItem> A.notifyDiff(
+    fun <A : RecyclerView.Adapter<*>, M : BaseModel> A.notifyDiff(
         old: List<M>,
         new: List<M>,
         compareItems: (M, M) -> Boolean = { oldItem, newItem ->
