@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.tunc.mvvm_architecture.base.BaseInterfaces
 import com.tunc.mvvm_architecture.base.BaseResponseCallback
 import com.tunc.mvvm_architecture.base.BaseViewModel
-import com.tunc.mvvm_architecture.data.model.response.PostResponse
+import com.tunc.mvvm_architecture.data.model.response.TodoResponse
 import com.tunc.mvvm_architecture.domain.model.Post
 import com.tunc.mvvm_architecture.domain.usecase.Post.PostUseCase
 import com.tunc.mvvm_architecture.presentation.mapper.toPost
@@ -14,17 +14,19 @@ class MainScreenActivityViewModel<I : BaseInterfaces> @Inject constructor(privat
     BaseViewModel<I>() {
 
     val postLiveData = MutableLiveData<List<Post>>()
+  /*  val postData = MutableLiveData<Post>()
+
+    val post: Post? get() = postData.value
+    fun set(post: Post) = run { postData.value = post }*/
 
     fun getTodos() {
-
         postUseCase.getTodos(object :
-            BaseResponseCallback<List<PostResponse>>(interfaces) {
-            override fun onSuccess(response: List<PostResponse>?) {
+            BaseResponseCallback<List<TodoResponse>>(interfaces) {
+            override fun onSuccess(response: List<TodoResponse>?) {
                 super.onSuccess(response)
                 postLiveData.value = response?.map {
                     it.toPost()
                 }
-
             }
         })
 

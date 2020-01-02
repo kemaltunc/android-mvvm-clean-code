@@ -2,7 +2,7 @@ package com.tunc.mvvm_architecture.data.model.response
 
 import com.google.gson.annotations.SerializedName
 
-data class PostResponse(
+data class TodoResponse(
     @SerializedName("userId")
     var userId: String?,
     @SerializedName("id")

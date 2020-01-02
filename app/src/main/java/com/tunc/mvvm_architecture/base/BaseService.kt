@@ -7,7 +7,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-open class BaseServiceImp {
+open class BaseService {
     inner class Request<T> {
         fun <T> execute(
             observable: Single<T>,

@@ -4,11 +4,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.extensions.LayoutContainer
 
 @Suppress("UNCHECKED_CAST")
-abstract class BaseViewHolder<M : BaseModel, P : Any?> :
+abstract class BaseViewHolder<M : BaseModel, V : ViewDataBinding> :
     RecyclerView.ViewHolder, LayoutContainer {
 
     constructor(itemView: View) : super(itemView)
@@ -24,10 +26,10 @@ abstract class BaseViewHolder<M : BaseModel, P : Any?> :
     override val containerView: View?
         get() = this.itemView
 
-    abstract fun bind(item: P)
+    open fun bind(item: M, databinding: V) {}
 
     internal fun bindItem(item: M) {
-        bind(item as P)
+        bind(item, DataBindingUtil.bind(itemView)!!)
     }
 
 

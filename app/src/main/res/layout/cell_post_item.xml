@@ -1,9 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:background="@android:color/background_dark"
-    android:layout_marginBottom="20dp"
-    android:layout_height="60dp">
 
-</LinearLayout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.tunc.mvvm_architecture.domain.model.Post" />
+
+        <variable
+            name="MainScreenModel"
+            type="com.tunc.mvvm_architecture.presentation.ui.main.MainScreenActivityViewModel" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:padding="10dp"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            app:cardCornerRadius="12dp"
+            app:cardBackgroundColor="@android:color/holo_blue_dark"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/cell_post_Item_textview"
+                android:textColor="@android:color/white"
+                android:text="@{data.title}"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</layout>
