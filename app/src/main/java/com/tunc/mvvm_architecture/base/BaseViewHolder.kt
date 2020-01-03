@@ -26,7 +26,7 @@ abstract class BaseViewHolder<M : BaseModel, V : ViewDataBinding> :
     override val containerView: View?
         get() = this.itemView
 
-    open fun bind(item: M, databinding: V) {}
+    abstract fun bind(item: M, databinding: V)
 
     internal fun bindItem(item: M) {
         bind(item, DataBindingUtil.bind(itemView)!!)

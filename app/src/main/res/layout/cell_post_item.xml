@@ -8,10 +8,6 @@
         <variable
             name="data"
             type="com.tunc.mvvm_architecture.domain.model.Post" />
-
-        <variable
-            name="MainScreenModel"
-            type="com.tunc.mvvm_architecture.presentation.ui.main.MainScreenActivityViewModel" />
     </data>
 
     <LinearLayout
@@ -21,9 +17,10 @@
         android:layout_height="wrap_content">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cell_post_Item_card"
             android:layout_width="match_parent"
             app:cardCornerRadius="12dp"
-            app:cardBackgroundColor="@android:color/holo_blue_dark"
+            app:cardBackgroundColor="@{data.selected==true?@color/colorAccent :@color/colorPrimaryDark}"
             android:layout_height="150dp">
 
             <TextView

@@ -35,7 +35,7 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel<BaseInterfac
         binding = DataBindingUtil.setContentView(this, layoutRes())
         viewModel =
             ViewModelProviders.of(
-                this,
+                this@BaseActivity,
                 viewModelFactory
             ).get((model() as Class<VM>)).also {
                 it.onAttach(this)

@@ -8,9 +8,12 @@ import androidx.recyclerview.widget.*
 fun <A : RecyclerView.Adapter<*>> A.vertical(
     recyclerView: RecyclerView,
     layoutManager: RecyclerView.LayoutManager? = null,
-    @DrawableRes separatorDrawable: Int? = null
+    @DrawableRes separatorDrawable: Int? = null,
+    animation: Boolean? = true,
+    setHasStableId: Boolean? = true
 ): A {
     recyclerView.run {
+        setHasStableIds(setHasStableId!!)
         this.layoutManager = layoutManager ?: LinearLayoutManager(context)
         adapter = this@vertical
         separatorDrawable?.let {
@@ -22,6 +25,9 @@ fun <A : RecyclerView.Adapter<*>> A.vertical(
                 }
             )
         }
+
+        animation.let { (itemAnimator as SimpleItemAnimator).supportsChangeAnimations }
+
     }
     return this
 }
@@ -72,4 +78,3 @@ fun <A : RecyclerView.Adapter<*>> A.onInitGrid(
     }
     return this
 }
-

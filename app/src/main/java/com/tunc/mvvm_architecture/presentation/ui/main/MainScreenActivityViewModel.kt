@@ -10,14 +10,14 @@ import com.tunc.mvvm_architecture.domain.usecase.Post.PostUseCase
 import com.tunc.mvvm_architecture.presentation.mapper.toPost
 import javax.inject.Inject
 
-class MainScreenActivityViewModel<I : BaseInterfaces> @Inject constructor(private val postUseCase: PostUseCase) :
-    BaseViewModel<I>() {
+class MainScreenActivityViewModel<I : BaseInterfaces> @Inject constructor(private val postUseCase: PostUseCase) : BaseViewModel<I>() {
 
-    val postLiveData = MutableLiveData<List<Post>>()
-  /*  val postData = MutableLiveData<Post>()
+    val postLiveData = MutableLiveData<MutableList<Post>>()
 
-    val post: Post? get() = postData.value
-    fun set(post: Post) = run { postData.value = post }*/
+
+    fun selectedTodo(position: Int) {
+        postLiveData.value?.get(position)?.isSelected = true
+    }
 
     fun getTodos() {
         postUseCase.getTodos(object :
@@ -26,7 +26,7 @@ class MainScreenActivityViewModel<I : BaseInterfaces> @Inject constructor(privat
                 super.onSuccess(response)
                 postLiveData.value = response?.map {
                     it.toPost()
-                }
+                }?.toMutableList()
             }
         })
 
