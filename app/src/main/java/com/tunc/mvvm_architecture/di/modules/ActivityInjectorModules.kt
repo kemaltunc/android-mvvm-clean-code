@@ -1,6 +1,6 @@
 package com.tunc.mvvm_architecture.di.modules
 
-import com.basefy.burger_king.di.scopes.ActivityScope
+import com.tunc.mvvm_architecture.di.scopes.ActivityScope
 import com.tunc.mvvm_architecture.presentation.ui.main.MainScreenActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

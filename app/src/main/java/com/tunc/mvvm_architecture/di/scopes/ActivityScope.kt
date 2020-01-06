@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.basefy.burger_king.di.scopes
+package com.tunc.mvvm_architecture.di.scopes
 
 import javax.inject.Scope
 
