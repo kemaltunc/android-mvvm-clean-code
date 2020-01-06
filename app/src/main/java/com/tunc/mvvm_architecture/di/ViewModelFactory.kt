@@ -1,4 +1,4 @@
-package com.android.artgallery.presentation
+package com.tunc.mvvm_architecture.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
