@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 class MainScreenActivityViewModel<I : BaseInterfaces> @Inject constructor(private val postUseCase: PostUseCase) : BaseViewModel<I>() {
 
-    val postLiveData = MutableLiveData<MutableList<Post>>()
+    val postLiveData = MutableLiveData<List<Post>>()
 
 
     fun selectedTodo(position: Int) {
@@ -26,7 +26,7 @@ class MainScreenActivityViewModel<I : BaseInterfaces> @Inject constructor(privat
                 super.onSuccess(response)
                 postLiveData.value = response?.map {
                     it.toPost()
-                }?.toMutableList()
+                }
             }
         })
 

@@ -31,7 +31,7 @@ class MainScreenActivity : BaseActivity<ActivityMainScreenBinding, MainScreenAct
             animation = false
         )
 
-        viewModel.postLiveData.observe(this, Observer<List<BaseModel>> {
+        viewModel.postLiveData.observe(this, Observer{
             postAdapter.submitList(it)
         })
 
